@@ -1,0 +1,274 @@
+/* style.css - 標楷體版本 */
+
+/* --- 基本重設 --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    /* 🌟 更改在這裡：優先使用標楷體 */
+    font-family: '標楷體', 'DFKai-SB', 'BiauKai', 'Microsoft JhengHei', 'Arial', sans-serif; 
+}
+
+body, html {
+    height: 100%;
+    background-color: #e0e0e0; /* 圖片中的灰色背景 */
+}
+
+/* --- 主要版面配置 (Flexbox) --- */
+.container {
+    display: flex;
+    width: 100%;
+    max-width: 1200px; /* 設定最大寬度，在大螢幕上更好看 */
+    min-height: 100vh;
+    margin: 30px auto; /* 頁面置中 */
+    /* 修正：box-shadow 應該要有單位 px */
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1) ; 
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+/* --- 1. 左側邊欄 (藍色) --- */
+.sidebar {
+    flex-basis: 320px; /* 側邊欄固定寬度 */
+    flex-shrink: 0;
+    background-color: #007bff; /* 鮮豔的藍色 */
+    color: white;
+    padding:35px ;
+    
+    /* 讓 .sidebar-top 和 .sidebar-bottom 垂直分開 */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.sidebar-top, .sidebar-bottom {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* 內部項目置中 */
+    width: 100%;
+}
+
+/* 側邊欄橢圓標題 (白框) */
+.oval-title-sidebar {
+    display: inline-block; /* 寬度貼合文字 */
+    border: 2px solid white;
+    background-color: transparent; /* 透明背景 */
+    color: white;
+    border-radius: 999px; /* 關鍵：變成橢圓形 */
+    padding: 8px 25px;
+    margin-bottom: 100px; /* 縮小底部間距，原 100px 太大 */
+    text-align: center;
+}
+
+/* 圓形照片 */
+.profile-pic-container {
+    width: 150px;
+    height: 150px;
+    border: 3px solid white;
+    background-color: white;
+    border-radius: 50%; /* 關鍵：變成圓形 */
+    overflow: hidden; /* 裁剪圖片 */
+    margin-bottom: 15px;
+}
+
+.profile-pic-container img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* 讓圖片填滿圓形 */
+}
+
+/* 側邊欄內容框 (白框) */
+.content-box-sidebar {
+    border: 2px solid rgb(8, 8, 8);
+    background-color: transparent;
+    padding: 15px;
+    width: 100%;
+    min-height: 150px;
+    border-radius: 8px;
+    margin-bottom: 20px;
+}
+.content-box-sidebar ul {
+    list-style-position: inside; /* 讓清單項目符號在框內 */
+    padding-left: 10px;
+}
+.content-box-sidebar li {
+    margin-bottom: 5px;
+}
+
+/* 聯絡方式的四個方塊 */
+.contact-grid {
+    display: flex;
+    flex-wrap: wrap; /* 換行 */
+    gap: 10px;
+    justify-content: center;
+}
+.contact-box {
+    /* 修正：將 20px solid border 改為 2px 邊框和 padding，避免文字被擠壓 */
+    border: 2px solid rgb(102, 15, 243); 
+    background-color: rgb(250, 247, 247);
+    color: rgb(2, 2, 2);
+    text-decoration: none;
+    
+    /* === 關鍵調整開始 === */
+    width: 200px; /* 建議調整到一個能容納文字的寬度 */
+    font-family: "DFKai-sb", "標楷體", serif; 
+    word-break: normal; 
+    white-space: normal; 
+    overflow-wrap: break-word; 
+    /* === 關鍵調整結束 === */
+    
+    height: auto; 
+    min-height: 40px;
+    padding: 5px; /* 增加內距 */
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column; /* 讓 Email 的 label 和 value 垂直排列 */
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 10px;
+    text-align: center;
+    
+}
+
+/* --- 2. 右側主要內容 (白色) --- */
+.main-content {
+    flex-grow: 1; /* 佔滿剩餘寬度 */
+    background-color: white; 
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px; /* 每個 section 之間的間距 */
+}
+
+/* 主內容橢圓標題 (黑框) */
+.oval-title-main {
+    display: inline-block;
+    border: 2px solid black;
+    background-color: white;
+    color: black;
+    border-radius: 999px; /* 橢圓形 */
+    padding: 8px 25px;
+    font-weight: bold;
+}
+
+/* 水平分隔線 (黑線) */
+hr.separator {
+    border: none;
+    height: 2px;
+    background-color: black;
+    margin-top: 5px; /* 緊跟在標題下方 */
+    margin-bottom: 20px;
+    width: 100%;
+}
+
+/* 主內容的方框 (黑框) */
+.content-box-main {
+    border: 2px solid black;
+    background-color: white;
+    padding: 20px;
+    min-height: 200px;
+    border-radius: 8px;
+}
+/* 註: 移除原 .content-box-main ul/li 樣式，改用 .skill-list-container 專屬樣式 */
+
+
+/* "經驗" 區塊的垂直虛線 */
+.timeline {
+    position: relative;
+    /* 關鍵：用左邊框畫出垂直虛線 */
+    border-left: 3px dotted black;
+    padding-left: 30px;
+    margin-left: 10px; /* 讓線往內縮一點 */
+}
+
+.timeline-item {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+/* 關鍵：用 ::before 偽元素做出時間軸上的 "圓點" */
+.timeline-item::before {
+    content: '';
+    position: absolute;
+    /* 調整 left 讓圓點對齊虛線 */
+    left: -18px; 
+    top: 10px; /* 對齊標題 */
+    width: 12px;
+    height: 12px;
+    background-color: black;
+    border-radius: 50%;
+    z-index: 1;
+}
+
+/* 經驗項目 "照片、文字" 的標題框 */
+.timeline-item-title {
+    /* 🌟 修正原程式碼錯誤: 將 padding: 50px nline-block; 修正 */
+    border: 2px solid black;
+    background-color: white;
+    padding: 10px 15px; /* 修正為合理的內距 */
+    display: inline-block; /* 讓寬度貼合文字 */
+    margin-bottom: 15px; /* 調整為合理的底部間距 */
+    border-radius: 8px;
+}
+
+/* 經驗項目 "照片、文字" 的內容框 */
+.content-box-small {
+    border: 2px solid black;
+    background-color: white;
+    padding: 15px;
+    border-radius: 8px;
+    /* 為了讓圖片和文字並排 */
+    display: flex; 
+    gap: 15px;
+    align-items: center;
+}
+.content-box-small img {
+    max-width: 100px; /* 限制圖片最大寬度 */
+    height: auto;
+    border-radius: 4px;
+    margin-bottom: 0; /* 移除底部間距 */
+}
+
+/* --- 3. 技能進度條/等級線條樣式 (新增) --- */
+
+/* 技能列表整體容器 */
+.skill-list-container {
+    padding: 0; /* 移除額外內距 */
+    list-style: none; /* 移除預設的列表符號 */
+}
+
+.skill-item {
+    display: flex; /* 啟用 Flexbox 讓技能名稱和線條並排 */
+    align-items: center; /* 垂直置中對齊 */
+    margin-bottom: 15px;
+    font-size: 1.1rem;
+    font-weight: bold; /* 技能名稱加粗 */
+    gap: 20px; /* 名稱與線條之間的間距 */
+}
+
+/* 技能名稱區塊 (固定寬度，確保線條對齊) */
+.skill-name {
+    flex-basis: 150px; /* 固定技能名稱的寬度 */
+    flex-shrink: 0;
+}
+
+/* 技能線條/等級圖標區塊 (佔滿剩餘空間) */
+.skill-level-bar {
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+    gap: 5px; /* 每個星號之間的間距 */
+}
+
+/* 等級圖標樣式 (使用星星) */
+.skill-level-bar .star-filled {
+    color: gold; /* 滿星的顏色 */
+    font-size: 1.5rem; /* 讓星號大一點 */
+    line-height: 1; /* 調整行高以保持對齊 */
+}
+.skill-level-bar .star-empty {
+    color: #ccc; /* 空星的顏色 */
+    font-size: 1.5rem;
+    line-height: 1;
+}
